@@ -10,6 +10,9 @@ const app = Vue.createApp({
         { name: "和氣あず未", age: 27, hometown: "東京都", checked: false },
         { name: "三森すずこ", age: 35, hometown: "東京都", checked: true },
         { name: "南條愛乃", age: 36, hometown: "静岡県", checked: true },
+        { name: "夏川椎菜", age: 25, hometown: "千葉県", checked: false },
+        { name: "麻倉もも", age: 27, hometown: "福岡県", checked: false },
+        { name: "雨宮天", age: 28, hometown: "東京都", checked: false },
       ],
     };
   },

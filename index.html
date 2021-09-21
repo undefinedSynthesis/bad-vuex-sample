@@ -6,6 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../node_modules/bootstrap-honoka/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./style.css">
   <title>Document</title>
 </head>
 
@@ -13,10 +14,11 @@
   <div class="container">
     <div class="row bg-white" id="app">
       <div class="col-3">
-        <ul>
-          <li v-for="(actress, i) in searchResult">
-            <label :for="'actress' + i">
-              <input type="checkbox" :id="'actress' + i" v-model="actresses[i].checked">{{actress.name}}
+        <ul class="list-unstyled border-right border-left">
+          <li v-for="(actress, i) in searchResult" class="border-bottom">
+            <label :for="'actress' + i" class="my-2">
+              <input type="checkbox" :id="'actress' + i" v-model="actresses[i].checked"
+                class="ml-3 mr-1">{{actress.name}}
             </label>
           </li>
         </ul>
