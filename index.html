@@ -11,20 +11,20 @@
 
 <body class="bg-light">
   <div class="container">
-    <div class="row">
-      <div class="col-12 bg-white">
-        <section id="app">
-          <ul>
-            <li v-for="(actress, i) in actresses">
-              <label :for="'actress' + i">
-                <input type="checkbox" :id="'actress' + i" v-model="actresses[i].checked">{{actress.name}}
-              </label>
-            </li>
-          </ul>
-        </section>
+    <div class="row bg-white" id="app">
+      <div class="col-3">
+        <ul>
+          <li v-for="(actress, i) in searchResult">
+            <label :for="'actress' + i">
+              <input type="checkbox" :id="'actress' + i" v-model="actresses[i].checked">{{actress.name}}
+            </label>
+          </li>
+        </ul>
       </div>
+      <section class="col-3">
+        <input type="search" class="form-control" v-model.trim="keyword">
+      </section>
     </div>
-  </div>
 </body>
 <script src="../node_modules/jquery/dist/jquery.min.js"></script>
 <script src="../node_modules/bootstrap-honoka/dist/js/bootstrap.bundle.min.js"></script>
