@@ -1,18 +1,16 @@
-const calc = function () {
-  $("tbody tr").each(function () {
-    const $that = $(this);
-    const unitPrice = $that.find('input[name="unit_price[]"]').val();
-    const quantity = $that.find('input[name="quantity[]"]').val();
-    const rate = $that.find('input[name="conv_value[]"]').val();
-    const amounts = new Decimal(unitPrice).times(quantity).div(rate);
-    $that.find('input[name="amounts[]"]').val(amounts.toNumber());
-  });
-};
-
-$('input[name="unit_price[]"]').on("change", function () {
-  calc();
+const app = Vue.createApp({
+  data() {
+    return {
+      selected: "916851500",
+      options: null,
+    };
+  },
+  created: async function () {
+    const response = await axios.get("../cities.php");
+    if (response.status === 200 && response.data) {
+      this.options = response.data;
+    }
+  },
 });
 
-$('input[name="quantity[]"]').on("change", function () {
-  calc();
-});
+app.mount("#app");
