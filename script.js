@@ -1,3 +1,5 @@
+import { default as hendler } from "./error-handler.js";
+
 const app = Vue.createApp({
   data() {
     return {
@@ -6,9 +8,9 @@ const app = Vue.createApp({
     };
   },
   created: async function () {
-    const response = await axios.get("../cities.php");
-    if (response.status === 200 && response.data) {
-      this.options = response.data;
+    const { data, error } = await axios.get("../cities.php");
+    if (data) {
+      this.options = data;
     }
   },
 });
