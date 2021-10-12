@@ -3,15 +3,30 @@ import { default as hendler } from "./error-handler.js";
 const app = Vue.createApp({
   data() {
     return {
-      selected: "916851500",
-      options: null,
+      datetime: null,
     };
   },
-  created: async function () {
-    const { data, error } = await axios.get("../cities.php");
-    if (data) {
-      this.options = data;
-    }
+  mounted() {
+    const datetimeInput = this.$refs.datetimeInput;
+    datetimeInput.classList.add("flatpickr");
+    flatpickr(".flatpickr", {
+      enableTime: true,
+      dateFormat: "Y-m-d H:i",
+      time_24hr: true,
+      defaultDate: "today",
+      maxDate: "today",
+    });
+  },
+  computed: {
+    isValidDateTime: function () {
+      return moment(this.datetime).isValid();
+    },
+  },
+  methods: {
+    inputTime: function () {
+      const now = moment().format("YYYY-MM-DD HH:mm");
+      this.datetime ??= now;
+    },
   },
 });
 

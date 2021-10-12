@@ -5,7 +5,8 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./css/bootstrap.min.css">
+  <link rel="stylesheet" href="../node_modules/bootstrap-honoka/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
   <link rel="stylesheet" href="./style.css">
   <title>Document</title>
 </head>
@@ -13,30 +14,14 @@
 <body class="bg-light">
   <div class="container">
     <div class="row bg-white" id="app">
-      <div class="col-12 my-3">
-        <p>
-          <input type="text" class="form-control">
-          <button type="button" class="btn btn-danger">検索</button>
-        </p>
-        <table class="table">
-          <thead>
-            <tr>
-              <th>県名</th>
-              <th>市町村名</th>
-              <th>町名</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="(city, i) in options">
-              <th>{{city.ken_name}}</th>
-              <td>{{city.city_name}}</td>
-              <td>{{city.town_name}}</td>
-            </tr>
-          </tbody>
-        </table>
+      <div class="col-4 my-3 d-flex">
+        <input type="text" class="form-control datetime-local" ref="datetimeInput" v-model="datetime">
+        <button class="btn btn-info btn-sm text-nowrap mx-3" @click="inputTime">打刻</button>
       </div>
     </div>
 </body>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script src="https://momentjs.com/downloads/moment-with-locales.min.js"></script>
 <script src="../node_modules/jquery/dist/jquery.min.js"></script>
 <script src="../node_modules/bootstrap-honoka/dist/js/bootstrap.bundle.min.js"></script>
 <script src="../node_modules/axios/dist/axios.min.js"></script>
