@@ -1,6 +1,6 @@
 <?php
 
-$date = '2021-10-12 23:09:45';
+$date = '2021-10-12 23:00:00';
 var_dump(isValidDateTime($date));
 
 /**
@@ -29,13 +29,13 @@ function isValidDateTime(string $datetime): bool
     $time = $parts[1];
     $counts = count(explode(':', $time));
     if ($counts === 3) {
-        $matched_24_hour = preg_match('/^(0[0-9]{1}|1[0-9]{1}|2[0-3]{1}):(0[1-9]{1}|[0-5]{1}[1-9]{1}):(0[1-9]{1}|[0-5]{1}[1-9]{1})$/', $time) != false;
-        $matched_12_hour = preg_match('/^(0[0-9]{1}|1[0-2]{1}):(0[1-9]{1}|[0-5]{1}[1-9]{1}):(0[1-9]{1}|[0-5]{1}[1-9]{1})$/', $time) != false;
+        $matched_24_hour = preg_match('/^(0[0-9]{1}|1[0-9]{1}|2[0-3]{1}):(0[1-9]{1}|[0-5]{1}[0-9]{1}):(0[1-9]{1}|[0-5]{1}[0-9]{1})$/', $time) != false;
+        $matched_12_hour = preg_match('/^(0[0-9]{1}|1[0-2]{1}):(0[1-9]{1}|[0-5]{1}[0-9]{1}):(0[1-9]{1}|[0-5]{1}[0-9]{1})$/', $time) != false;
 
         return $matched_24_hour || $matched_12_hour;
     } elseif ($counts === 2) {
-        $matched_24_hour = preg_match('/^(0[0-9]{1}|1[0-9]{1}|2[0-3]{1}):(0[1-9]{1}|[0-5]{1}[1-9]{1})$/', $time) != false;
-        $matched_12_hour = preg_match('/^(0[0-9]{1}|1[0-2]{1}):(0[1-9]{1}|[0-5]{1}[1-9]{1})$/', $time) != false;
+        $matched_24_hour = preg_match('/^(0[0-9]{1}|1[0-9]{1}|2[0-3]{1}):(0[1-9]{1}|[0-5]{1}[0-9]{1})$/', $time) != false;
+        $matched_12_hour = preg_match('/^(0[0-9]{1}|1[0-2]{1}):(0[1-9]{1}|[0-5]{1}[0-9]{1})$/', $time) != false;
 
         return $matched_24_hour || $matched_12_hour;
     }
