@@ -45,9 +45,9 @@
 </script>
 
 <script type="text/x-template" id="add">
-  <div class="d-flex">
+  <div>
     <button type="button" class="btn btn-info" @click="add">追加</button>
-    <p class="alert alert-success mb-0" v-show="overCounts">5個以上追加しました！</p>
+    <p v-show="getCounts > 4">{{getCounts}}個あります。</p>
   </div>
 </script>
 

@@ -16,6 +16,12 @@ const app = {
     input() {
       this.$store.commit("push", "小倉唯");
     },
+    dispatch() {
+      this.$store.dispatch("getActresses");
+    },
+  },
+  created() {
+    this.dispatch();
   },
 };
 Vue.createApp(app).use(store).mount("#app");

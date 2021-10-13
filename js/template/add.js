@@ -7,8 +7,8 @@ export default {
     };
   },
   computed: {
-    overCounts() {
-      return this.$store.getters.getProcs.length > 4;
+    getCounts() {
+      return this.$store.getters.getProcs.length;
     },
   },
   methods: {
