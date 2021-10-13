@@ -13,10 +13,12 @@
 
 <body class="bg-light">
   <div class="container">
-    <div class="row bg-white" id="app">
-      <div class="col-4 my-3 d-flex">
-        <input type="text" class="form-control datetime-local" ref="datetimeInput" v-model="datetime">
-        <button class="btn btn-info btn-sm text-nowrap mx-3" @click="inputTime">打刻</button>
+    <div class="row bg-white py-3" id="app">
+      <div class="col-3">
+        <timecard></timecard>
+      </div>
+      <div class="col-6">
+        <add></add>
       </div>
     </div>
 </body>
@@ -26,6 +28,27 @@
 <script src="../node_modules/bootstrap-honoka/dist/js/bootstrap.bundle.min.js"></script>
 <script src="../node_modules/axios/dist/axios.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vue@3.2.12/dist/vue.global.js"></script>
-<script type="module" src="./script.js"></script>
+<script src="https://unpkg.com/vuex@4.0.0/dist/vuex.global.js"></script>
+<script type=" module" src="./script.js"></script>
+
+<script type="text/x-template" id="timecard">
+  <div class="input-group">
+    <input type="text" v-model="name" class="form-control">
+    <div class="input-group-append">
+      <button type="button" class="btn btn-secondary" @click="add">追加</button>
+    </div>
+  </div>
+  
+  <ol>
+    <li v-for="proc in getProcs">{{proc}}</li>
+  </ol>
+</script>
+
+<script type="text/x-template" id="add">
+  <div class="d-flex">
+    <button type="button" class="btn btn-info" @click="add">追加</button>
+    <p class="alert alert-success mb-0" v-show="overCounts">5個以上追加しました！</p>
+  </div>
+</script>
 
 </html>

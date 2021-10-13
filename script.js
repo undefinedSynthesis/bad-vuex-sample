@@ -1,33 +1,21 @@
-import { default as hendler } from "./error-handler.js";
+import timecard from "./js/template/timecard.js";
+import add from "./js/template/add.js";
+import store from "./js/store/store.js";
 
-const app = Vue.createApp({
-  data() {
-    return {
-      datetime: null,
-    };
-  },
-  mounted() {
-    const datetimeInput = this.$refs.datetimeInput;
-    datetimeInput.classList.add("flatpickr");
-    flatpickr(".flatpickr", {
-      enableTime: true,
-      dateFormat: "Y-m-d H:i",
-      time_24hr: true,
-      defaultDate: "today",
-      maxDate: "today",
-    });
+const app = {
+  components: {
+    timecard: timecard,
+    add: add,
   },
   computed: {
-    isValidDateTime: function () {
-      return moment(this.datetime).isValid();
+    exists() {
+      return this.$store.getters.exists("小倉唯");
     },
   },
   methods: {
-    inputTime: function () {
-      const now = moment().format("YYYY-MM-DD HH:mm");
-      this.datetime ??= now;
+    input() {
+      this.$store.commit("push", "小倉唯");
     },
   },
-});
-
-app.mount("#app");
+};
+Vue.createApp(app).use(store).mount("#app");
